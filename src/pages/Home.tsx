@@ -39,7 +39,7 @@ const Home = () => {
 					className="absolute top-0 left-0 h-screen w-screen bg-gradient-to-b from-transparent to-black"
 				></motion.div>
 			</section>
-			<section className="max-w-5xl p-4 md:p-0 mx-auto -mt-36 z-10 relative pb-20">
+			<section className="max-w-5xl p-4 md:p-0 mx-auto -mt-36 z-10 relative">
 				<motion.h2
 					initial={{ opacity: 0 }}
 					animate={{ opacity: 1 }}
@@ -49,7 +49,7 @@ const Home = () => {
 					Tributes & Prayers
 				</motion.h2>
 
-				<ul className="mt-6 flex flex-col gap-4">
+				<ul className="mt-6 flex flex-col gap-4 pb-20">
 					{tributes.map(({ value }, i) => (
 						<motion.li
 						key={i}

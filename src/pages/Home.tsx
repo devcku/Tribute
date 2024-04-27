@@ -3,6 +3,11 @@ import { useEffect, useState } from "react";
 import { addDoc, onSnapshot } from "firebase/firestore";
 import { tributesQuery, tributesRef } from "../contexts/DB";
 import { PaperAirplaneIcon } from "@heroicons/react/20/solid";
+import { imagePathsPromise } from "../assets";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { EffectFade, Autoplay } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/effect-fade";
 
 type tribute = { value: string; name: string; createdAt: Date };
 const Home = () => {
@@ -12,6 +17,7 @@ const Home = () => {
 	const [name, setName] = useState<string>("");
 	const [value, setValue] = useState<string>("");
 	const [loading, setLoading] = useState(false);
+	const [images, setImages] = useState<string[]>([]);
 
 	useEffect(() => {
 		onSnapshot(tributesQuery, (snapshot) => {
@@ -27,6 +33,11 @@ const Home = () => {
 						?.scrollIntoView({ behavior: "smooth" });
 				}, 500);
 			}
+		});
+
+		imagePathsPromise.then((imagePaths) => {
+			// Use the array of image paths here
+			setImages([...imagePaths]);
 		});
 	}, []);
 	return (
@@ -84,17 +95,42 @@ const Home = () => {
 				</motion.div>
 			</motion.div>
 			<section>
-				<div className="h-screen w-screen bg-purple-900 flex justify-center items-center">
+				<div className="absolute h-full w-full z-0">
+					<Swiper
+						loop
+						autoplay={{
+							delay: 2500,
+							disableOnInteraction: false,
+						}}
+						modules={[Autoplay, EffectFade]}
+						effect={"fade"}
+						className="h-full w-full"
+					>
+						{images.map((image) => (
+							<SwiperSlide key={image}>
+								<motion.img
+									initial={{ opacity: 0 }}
+									animate={{ opacity: 1 }}
+									transition={{ duration: 0.3 }}
+									src={image}
+									className="h-full bg-purple-900/30 w-full object-cover object-center"
+									alt=""
+								/>
+							</SwiperSlide>
+						))}
+					</Swiper>
+				</div>
+				<div className="h-screen w-screen bg-purple-900/30 z-10 relative flex justify-center items-center">
 					<h1>In loving memory</h1>
 				</div>
 				<motion.div
 					initial={{ opacity: 0 }}
 					animate={{ opacity: 1 }}
 					transition={{ duration: 1 }}
-					className="absolute top-0 left-0 h-screen w-screen bg-gradient-to-b from-transparent to-black"
+					className="absolute top-0 left-0 h-screen w-screen z-20 bg-gradient-to-b from-transparent to-black"
 				></motion.div>
 			</section>
-			<section className="max-w-5xl p-4 md:p-0 mx-auto -mt-36 z-10 relative">
+			<section className="max-w-5xl p-4 md:p-0 mx-auto -mt-36 z-30 relative">
 				<motion.h2
 					initial={{ opacity: 0 }}
 					animate={{ opacity: 1 }}

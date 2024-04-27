@@ -45,7 +45,7 @@ const Home = () => {
 				initial={{ display: "none" }}
 				animate={{ display: nameOpen ? "flex" : "none" }}
 				transition={{ delay: nameOpen ? 0 : 0.3 }}
-				className="fixed top-0 left-0 h-full w-full flex justify-center md:items-center z-30"
+				className="fixed top-0 left-0 h-full w-full flex justify-center md:items-center z-50"
 			>
 				<motion.div
 					initial={{ opacity: 0 }}
@@ -173,7 +173,7 @@ const Home = () => {
 				initial={{ opacity: 0 }}
 				animate={{ opacity: 1 }}
 				transition={{ duration: 1, delay: 1 }}
-				className="fixed w-full left-0 bottom-0 z-20"
+				className="fixed w-full left-0 bottom-0 z-40"
 			>
 				<div className="max-w-5xl mx-auto border-t border-purple-900/60 bg-black  pt-1 px-2 md:px-0 flex items-center">
 					<textarea

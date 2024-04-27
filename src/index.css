@@ -18,3 +18,23 @@ h1 {
 	font-style: normal;
 	@apply text-6xl text-center pb-40 md:text-9xl;
 }
+
+/* width */
+::-webkit-scrollbar {
+	@apply w-4;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+	@apply bg-black;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+	@apply bg-zinc-800 rounded;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+	@apply bg-zinc-800;
+}

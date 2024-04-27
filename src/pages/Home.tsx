@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { addDoc, onSnapshot } from "firebase/firestore";
 import { tributesQuery, tributesRef } from "../contexts/DB";
 import { PaperAirplaneIcon } from "@heroicons/react/20/solid";
-import { imagePathsPromise } from "../assets";
+import images from "../assets";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { EffectFade, Autoplay } from "swiper/modules";
 import "swiper/css";
@@ -17,7 +17,6 @@ const Home = () => {
 	const [name, setName] = useState<string>("");
 	const [value, setValue] = useState<string>("");
 	const [loading, setLoading] = useState(false);
-	const [images, setImages] = useState<string[]>([]);
 
 	useEffect(() => {
 		onSnapshot(tributesQuery, (snapshot) => {
@@ -34,11 +33,11 @@ const Home = () => {
 				}, 500);
 			}
 		});
-
-		imagePathsPromise.then((imagePaths) => {
-			// Use the array of image paths here
-			setImages([...imagePaths]);
-		});
+		// let paths = "";
+		// for (let i = 1; i <= 90; i++) {
+		// 	paths += `img${i}, \n`;
+		// }
+		// console.log(paths);
 	}, []);
 	return (
 		<main>

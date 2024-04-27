@@ -47,7 +47,7 @@ const Home = () => {
 					initial={{ opacity: 0, y: 0 }}
 					animate={{ opacity: nameOpen ? 1 : 0, y: nameOpen ? 0 : "20px" }}
 					transition={{ duration: 0.3 }}
-					className="bg-zinc-900/50 md:shadow-lg border-t md:border-t-0 border-t-zinc-800 backdrop-blur-lg z-10 flex flex-col px-4 md:py-2 py-4 md:rounded-md max-w-xl w-full h-1/2 md:h-auto md:mt-0 mt-auto"
+					className="bg-zinc-900/50 md:shadow-lg border-t md:border-t-0 border-t-purple-900/60 backdrop-blur-lg z-10 flex flex-col px-4 md:py-2 py-4 md:rounded-md max-w-xl w-full h-1/2 md:h-auto md:mt-0 mt-auto"
 				>
 					<h3 className="md:text-3xl text-xl mb-1">Enter your full name</h3>
 					<p className="md:mb-10  text-purple-800">
@@ -140,7 +140,7 @@ const Home = () => {
 				transition={{ duration: 1, delay: 1 }}
 				className="fixed w-full left-0 bottom-0 z-20"
 			>
-				<div className="max-w-5xl mx-auto border-t border-purple-900/30 pt-1 px-2 md:px-0 flex items-center">
+				<div className="max-w-5xl mx-auto border-t border-purple-900/60 bg-black  pt-1 px-2 md:px-0 flex items-center">
 					<textarea
 						disabled={loading}
 						placeholder={`Write a tribute${name ? " as " + name : ""}...`}

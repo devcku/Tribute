@@ -143,11 +143,12 @@ const Home = () => {
 				<div className="max-w-5xl mx-auto border-t border-purple-900/60 bg-black  pt-1 px-2 md:px-0 flex items-center">
 					<textarea
 						disabled={loading}
+						readOnly={!name}
 						placeholder={`Write a tribute${name ? " as " + name : ""}...`}
 						className="resize-none outline-none w-full p-2 pb-0 bg-black rounded"
 						onChange={(e) => setValue(e.target.value)}
 						value={value}
-						onFocus={() => {
+						onClick={() => {
 							!name && setNameOpen(true);
 						}}
 					></textarea>

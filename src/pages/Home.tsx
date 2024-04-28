@@ -2,8 +2,12 @@ import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import { addDoc, onSnapshot } from "firebase/firestore";
 import { tributesQuery, tributesRef } from "../contexts/DB";
-import { PaperAirplaneIcon } from "@heroicons/react/20/solid";
-import images from "../assets";
+import {
+	PaperAirplaneIcon,
+	PauseIcon,
+	PlayIcon,
+} from "@heroicons/react/20/solid";
+import { images, song } from "../assets";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { EffectFade, Autoplay } from "swiper/modules";
 import "swiper/css";
@@ -17,6 +21,11 @@ const Home = () => {
 	const [name, setName] = useState<string>("");
 	const [value, setValue] = useState<string>("");
 	const [loading, setLoading] = useState(false);
+	const [playing, setPlaying] = useState(false);
+
+	// eslint-disable-next-line @typescript-eslint/no-unused-vars
+	const [music, _] = useState(new Audio(song));
+	music.loop = true;
 
 	useEffect(() => {
 		onSnapshot(tributesQuery, (snapshot) => {
@@ -33,14 +42,19 @@ const Home = () => {
 				}, 500);
 			}
 		});
-		// let paths = "";
-		// for (let i = 1; i <= 90; i++) {
-		// 	paths += `img${i}, \n`;
-		// }
-		// console.log(paths);
 	}, []);
 	return (
 		<main>
+			<button
+				onClick={() => {
+					setPlaying(!playing);
+
+					!playing ? music.play() : music.pause();
+				}}
+				className="fixed top-4 right-4 h-max w-max z-50 text- text-purple-300"
+			>
+				{playing ? <PauseIcon className="h-6" /> : <PlayIcon className="h-6" />}
+			</button>
 			<motion.div
 				initial={{ display: "none" }}
 				animate={{ display: nameOpen ? "flex" : "none" }}
@@ -120,7 +134,13 @@ const Home = () => {
 					</Swiper>
 				</div>
 				<div className="h-screen w-screen bg-purple-900/30 z-10 relative flex justify-center items-center">
-					<h1>In loving memory</h1>
+					<motion.h1
+						initial={{ y: 0 }}
+						animate={{ y: "20vh" }}
+						transition={{ duration: 3 }}
+					>
+						In loving memory
+					</motion.h1>
 				</div>
 				<motion.div
 					initial={{ opacity: 0 }}
@@ -151,7 +171,7 @@ const Home = () => {
 							<h4 className="text-sm capitalize text-purple-600 mb-2 font-semibold">
 								{name}
 							</h4>
-							<pre>{value}</pre>
+							<pre className=" whitespace-pre-wrap">{value}</pre>
 						</motion.li>
 					))}
 

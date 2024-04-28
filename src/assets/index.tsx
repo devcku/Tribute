@@ -89,6 +89,8 @@ import img88 from "./img (88).jpg";
 import img89 from "./img (89).jpg";
 import img90 from "./img (90).jpg";
 
+import song from './song.mp3';
+
 const images = [
 	img1,
 	img2,
@@ -182,4 +184,4 @@ const images = [
 	img90,
 ];
 
-export default images
+export  {images,song }

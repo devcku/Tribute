@@ -40,11 +40,6 @@ const Home = () => {
 					localTributes.push(doc.data() as tribute)
 				);
 				setTributes([...localTributes]);
-				setTimeout(() => {
-					document
-						.getElementById("bottom")
-						?.scrollIntoView({ behavior: "smooth" });
-				}, 500);
 			}
 		});
 
@@ -259,6 +254,9 @@ const Home = () => {
 									.then(() => {
 										setLoading(false);
 										setValue("");
+										document
+											.getElementById("bottom")
+											?.scrollIntoView({ behavior: "smooth" });
 									})
 									.catch(() => {
 										setLoading(false);

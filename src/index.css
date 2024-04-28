@@ -16,7 +16,7 @@ body,
 h1 {
 	font-family: "Satisfy", cursive;
 	font-style: normal;
-	@apply text-6xl text-center pb-40 md:text-9xl;
+	@apply text-6xl text-center md:text-9xl;
 }
 
 /* width */

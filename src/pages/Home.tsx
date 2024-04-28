@@ -23,6 +23,11 @@ const Home = () => {
 	const [loading, setLoading] = useState(false);
 	const [playing, setPlaying] = useState(false);
 
+	const [days, setDays] = useState(0);
+	const [hours, setHours] = useState(0);
+	const [minutes, setMinutes] = useState(0);
+	const [seconds, setSeconds] = useState(0);
+
 	// eslint-disable-next-line @typescript-eslint/no-unused-vars
 	const [music, _] = useState(new Audio(song));
 	music.loop = true;
@@ -42,6 +47,35 @@ const Home = () => {
 				}, 500);
 			}
 		});
+
+		// Set the date we're counting down to
+		const countDownDate = new Date("June 8, 2024 00:00:00").getTime();
+
+		// Update the count down every 1 second
+		const x = setInterval(() => {
+			// Get today's date and time
+			const now = new Date().getTime();
+
+			// Find the distance between now and the count down date
+			const distance = countDownDate - now;
+
+			// If the count down is finished, write some text
+			if (distance > 0) {
+				// Time calculations for days, hours, minutes and seconds
+				setDays(Math.floor(distance / (1000 * 60 * 60 * 24)));
+				setHours(
+					Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))
+				);
+				setMinutes(Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)));
+				setSeconds(Math.floor((distance % (1000 * 60)) / 1000));
+			} else {
+				clearInterval(x);
+				setDays(0);
+				setHours(0);
+				setMinutes(0);
+				setSeconds(0);
+			}
+		}, 1000);
 	}, []);
 	return (
 		<main>
@@ -134,13 +168,14 @@ const Home = () => {
 					</Swiper>
 				</div>
 				<div className="h-screen w-screen bg-purple-900/30 z-10 relative flex justify-center items-center">
-					<motion.h1
+				
+					<motion.div
 						initial={{ y: 0 }}
-						animate={{ y: "20vh" }}
+						animate={{ y: "10vh" }}
 						transition={{ duration: 3 }}
 					>
-						In loving memory
-					</motion.h1>
+						<h1>In loving memory</h1>
+					</motion.div>
 				</div>
 				<motion.div
 					initial={{ opacity: 0 }}
@@ -150,6 +185,13 @@ const Home = () => {
 				></motion.div>
 			</section>
 			<section className="max-w-5xl p-4 md:p-0 mx-auto -mt-36 z-30 relative">
+				<h3 className="text-xl font-semibold
+				">Burial Ceremony in</h3>
+				<p className="text-xs md:text-base">
+
+					{days} Days, {hours} Hours, {minutes} Minutes, {seconds} Seconds
+				</p>
+				<hr className="my-10 border-purple-900/30" />
 				<motion.h2
 					initial={{ opacity: 0 }}
 					animate={{ opacity: 1 }}

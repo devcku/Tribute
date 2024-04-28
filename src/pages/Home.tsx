@@ -168,7 +168,6 @@ const Home = () => {
 					</Swiper>
 				</div>
 				<div className="h-screen w-screen bg-purple-900/30 z-10 relative flex justify-center items-center">
-				
 					<motion.div
 						initial={{ y: 0 }}
 						animate={{ y: "10vh" }}
@@ -185,11 +184,14 @@ const Home = () => {
 				></motion.div>
 			</section>
 			<section className="max-w-5xl p-4 md:p-0 mx-auto -mt-36 z-30 relative">
-				<h3 className="text-xl font-semibold text-purple-600
-				">Burial Ceremony in</h3>
+				<h4 className="text-sm font-semibold text-purple-300">
+					8th June, 2024
+				</h4>
+				<h3 className="md:text-xl font-semibold text-purple-600">
+					Burial Ceremony
+				</h3>
 				<p className="text-xs md:text-base">
-
-					{days} Days, {hours} Hours, {minutes} Minutes, {seconds} Seconds
+					In {days} Days, {hours} Hours, {minutes} Minutes, {seconds} Seconds
 				</p>
 				<hr className="my-10 border-purple-900/30" />
 				<motion.h2

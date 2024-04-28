@@ -85,7 +85,7 @@ const Home = () => {
 
 					!playing ? music.play() : music.pause();
 				}}
-				className="fixed top-4 right-4 h-max w-max z-50 text- text-purple-300"
+				className="fixed top-4 right-4 h-max w-max z-50 text- text-purple-600"
 			>
 				{playing ? <PauseIcon className="h-6" /> : <PlayIcon className="h-6" />}
 			</button>
@@ -185,7 +185,7 @@ const Home = () => {
 				></motion.div>
 			</section>
 			<section className="max-w-5xl p-4 md:p-0 mx-auto -mt-36 z-30 relative">
-				<h3 className="text-xl font-semibold
+				<h3 className="text-xl font-semibold text-purple-600
 				">Burial Ceremony in</h3>
 				<p className="text-xs md:text-base">
 
@@ -196,7 +196,7 @@ const Home = () => {
 					initial={{ opacity: 0 }}
 					animate={{ opacity: 1 }}
 					transition={{ duration: 1, delay: 0.5 }}
-					className="text-xl mx-auto text-purple-600 font-semibold"
+					className="text-xl mx-auto font-semibold"
 				>
 					Tributes & Prayers
 				</motion.h2>

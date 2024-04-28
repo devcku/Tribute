@@ -202,9 +202,9 @@ const Home = () => {
 					{tributes.map(({ value, name }, i) => (
 						<motion.li
 							key={i}
-							initial={{ opacity: 0 }}
-							animate={{ opacity: 1 }}
-							transition={{ duration: 1, delay: 0.5 + 0.1 * i }}
+							initial={{ opacity: 0, y:20 }}
+							whileInView={{ opacity: 1, y:0 }}
+							transition={{ duration: 1 }}
 							className="bg-zinc-900 py-4 px-6 rounded"
 						>
 							<h4 className="text-sm capitalize text-purple-600 mb-2 font-semibold">

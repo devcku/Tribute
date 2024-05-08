@@ -1,17 +1,17 @@
-import { motion } from "framer-motion";
-import { useEffect, useState } from "react";
-import { addDoc, onSnapshot } from "firebase/firestore";
-import { tributesQuery, tributesRef } from "../contexts/DB";
 import {
 	PaperAirplaneIcon,
 	PauseIcon,
 	PlayIcon,
 } from "@heroicons/react/20/solid";
-import { images, song } from "../assets";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { EffectFade, Autoplay } from "swiper/modules";
+import { addDoc, onSnapshot } from "firebase/firestore";
+import { motion } from "framer-motion";
+import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import "swiper/css";
 import "swiper/css/effect-fade";
+import { Autoplay, EffectFade } from "swiper/modules";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { images, song } from "../assets";
+import { tributesQuery, tributesRef } from "../contexts/DB";
 
 type tribute = { value: string; name: string; createdAt: Date };
 const Home = () => {
@@ -23,10 +23,26 @@ const Home = () => {
 	const [loading, setLoading] = useState(false);
 	const [playing, setPlaying] = useState(false);
 
-	const [days, setDays] = useState(0);
-	const [hours, setHours] = useState(0);
-	const [minutes, setMinutes] = useState(0);
-	const [seconds, setSeconds] = useState(0);
+	const [days1, setDays1] = useState(0);
+	const [hours1, setHours1] = useState(0);
+	const [minutes1, setMinutes1] = useState(0);
+	const [seconds1, setSeconds1] = useState(0);
+	const [days2, setDays2] = useState(0);
+	const [hours2, setHours2] = useState(0);
+	const [minutes2, setMinutes2] = useState(0);
+	const [seconds2, setSeconds2] = useState(0);
+	const [days3, setDays3] = useState(0);
+	const [hours3, setHours3] = useState(0);
+	const [minutes3, setMinutes3] = useState(0);
+	const [seconds3, setSeconds3] = useState(0);
+	const [days4, setDays4] = useState(0);
+	const [hours4, setHours4] = useState(0);
+	const [minutes4, setMinutes4] = useState(0);
+	const [seconds4, setSeconds4] = useState(0);
+	const [days5, setDays5] = useState(0);
+	const [hours5, setHours5] = useState(0);
+	const [minutes5, setMinutes5] = useState(0);
+	const [seconds5, setSeconds5] = useState(0);
 
 	// eslint-disable-next-line @typescript-eslint/no-unused-vars
 	const [music, _] = useState(new Audio(song));
@@ -44,33 +60,80 @@ const Home = () => {
 		});
 
 		// Set the date we're counting down to
-		const countDownDate = new Date("June 8, 2024 00:00:00").getTime();
+		const countDownDate1 = new Date("June 2, 2024 00:00:00").getTime();
+		const countDownDate2 = new Date("June 5, 2024 00:00:00").getTime();
+		const countDownDate3 = new Date("June 7, 2024 00:00:00").getTime();
+		const countDownDate4 = new Date("June 8, 2024 00:00:00").getTime();
+		const countDownDate5 = new Date("June 9, 2024 00:00:00").getTime();
 
 		// Update the count down every 1 second
-		const x = setInterval(() => {
-			// Get today's date and time
-			const now = new Date().getTime();
+		const createInterval = (
+			countDownDate: number,
+			setDays: Dispatch<SetStateAction<number>>,
+			setHours: Dispatch<SetStateAction<number>>,
+			setMinutes: Dispatch<SetStateAction<number>>,
+			setSeconds: Dispatch<SetStateAction<number>>
+		) => {
+			const x = setInterval(() => {
+				// Get today's date and time
+				const now = new Date().getTime();
 
-			// Find the distance between now and the count down date
-			const distance = countDownDate - now;
+				// Find the distance between now and the count down date
+				const distance = countDownDate - now;
 
-			// If the count down is finished, write some text
-			if (distance > 0) {
-				// Time calculations for days, hours, minutes and seconds
-				setDays(Math.floor(distance / (1000 * 60 * 60 * 24)));
-				setHours(
-					Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))
-				);
-				setMinutes(Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)));
-				setSeconds(Math.floor((distance % (1000 * 60)) / 1000));
-			} else {
-				clearInterval(x);
-				setDays(0);
-				setHours(0);
-				setMinutes(0);
-				setSeconds(0);
-			}
-		}, 1000);
+				// If the count down is finished, write some text
+				if (distance > 0) {
+					// Time calculations for days, hours, minutes and seconds
+					setDays(Math.floor(distance / (1000 * 60 * 60 * 24)));
+					setHours(
+						Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))
+					);
+					setMinutes(Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)));
+					setSeconds(Math.floor((distance % (1000 * 60)) / 1000));
+				} else {
+					clearInterval(x);
+					setDays(0);
+					setHours(0);
+					setMinutes(0);
+					setSeconds(0);
+				}
+			}, 1000);
+		};
+		createInterval(
+			countDownDate1,
+			setDays1,
+			setHours1,
+			setMinutes1,
+			setSeconds1
+		);
+		createInterval(
+			countDownDate2,
+			setDays2,
+			setHours2,
+			setMinutes2,
+			setSeconds2
+		);
+		createInterval(
+			countDownDate3,
+			setDays3,
+			setHours3,
+			setMinutes3,
+			setSeconds3
+		);
+		createInterval(
+			countDownDate4,
+			setDays4,
+			setHours4,
+			setMinutes4,
+			setSeconds4
+		);
+		createInterval(
+			countDownDate5,
+			setDays5,
+			setHours5,
+			setMinutes5,
+			setSeconds5
+		);
 	}, []);
 	return (
 		<main>
@@ -179,15 +242,76 @@ const Home = () => {
 				></motion.div>
 			</section>
 			<section className="max-w-5xl p-4 md:p-0 mx-auto -mt-36 z-30 relative">
-				<h4 className="text-sm font-semibold text-purple-300">
-					8th June, 2024
-				</h4>
-				<h3 className="md:text-xl font-semibold text-purple-600">
-					Burial Ceremony
-				</h3>
-				<p className="text-xs md:text-base">
-					In {days} Days, {hours} Hours, {minutes} Minutes, {seconds} Seconds
-				</p>
+				<Swiper
+					loop
+					autoplay={{
+						delay: 2500,
+						disableOnInteraction: false,
+					}}
+					modules={[Autoplay]}
+				>
+					<SwiperSlide>
+						<h4 className="text-sm font-semibold text-purple-300">
+							2nd June, 2024
+						</h4>
+						<h3 className="md:text-xl font-semibold text-purple-600">
+							Service of Songs
+						</h3>
+						<p className="text-xs md:text-base">
+							In {days1} Days, {hours1} Hours, {minutes1} Minutes, {seconds1}{" "}
+							Seconds
+						</p>
+					</SwiperSlide>
+					<SwiperSlide>
+						<h4 className="text-sm font-semibold text-purple-300">
+							5th June, 2024
+						</h4>
+						<h3 className="md:text-xl font-semibold text-purple-600">
+							Commendation Service
+						</h3>
+						<p className="text-xs md:text-base">
+							In {days2} Days, {hours2} Hours, {minutes2} Minutes, {seconds2}{" "}
+							Seconds
+						</p>
+					</SwiperSlide>
+					<SwiperSlide>
+						<h4 className="text-sm font-semibold text-purple-300">
+							7th June, 2024
+						</h4>
+						<h3 className="md:text-xl font-semibold text-purple-600">
+							Crusade / Service of Songs
+						</h3>
+						<p className="text-xs md:text-base">
+							In {days3} Days, {hours3} Hours, {minutes3} Minutes, {seconds3}{" "}
+							Seconds
+						</p>
+					</SwiperSlide>
+					<SwiperSlide>
+						<h4 className="text-sm font-semibold text-purple-300">
+							8th June, 2024
+						</h4>
+						<h3 className="md:text-xl font-semibold text-purple-600">
+							Burial Ceremony
+						</h3>
+						<p className="text-xs md:text-base">
+							In {days4} Days, {hours4} Hours, {minutes4} Minutes, {seconds4}{" "}
+							Seconds
+						</p>
+					</SwiperSlide>
+					<SwiperSlide>
+						<h4 className="text-sm font-semibold text-purple-300">
+							9th June, 2024
+						</h4>
+						<h3 className="md:text-xl font-semibold text-purple-600">
+							Outing Service
+						</h3>
+						<p className="text-xs md:text-base">
+							In {days5} Days, {hours5} Hours, {minutes5} Minutes, {seconds5}{" "}
+							Seconds
+						</p>
+					</SwiperSlide>
+				</Swiper>
+
 				<hr className="my-10 border-purple-900/30" />
 				<motion.h2
 					initial={{ opacity: 0 }}
@@ -202,8 +326,8 @@ const Home = () => {
 					{tributes.map(({ value, name }, i) => (
 						<motion.li
 							key={i}
-							initial={{ opacity: 0, y:20 }}
-							whileInView={{ opacity: 1, y:0 }}
+							initial={{ opacity: 0, y: 20 }}
+							whileInView={{ opacity: 1, y: 0 }}
 							transition={{ duration: 0.3 }}
 							className="bg-zinc-900 py-4 px-6 rounded"
 						>

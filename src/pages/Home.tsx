@@ -11,6 +11,7 @@ import "swiper/css";
 import "swiper/css/effect-fade";
 import { Autoplay, EffectFade } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
+import { Swiper as SwiperType } from "swiper/types";
 import { images, song } from "../assets";
 import { tributesQuery, tributesRef } from "../contexts/DB";
 
@@ -45,7 +46,7 @@ const Home = () => {
 	const [minutes5, setMinutes5] = useState(0);
 	const [seconds5, setSeconds5] = useState(0);
 
-	const [swipe, setSwipe] = useState<null | Swiper>(null);
+	const [swipe, setSwipe] = useState<null | SwiperType>(null);
 
 	// eslint-disable-next-line @typescript-eslint/no-unused-vars
 	const [music, _] = useState(new Audio(song));

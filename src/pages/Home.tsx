@@ -1,4 +1,5 @@
 import {
+	ChevronRightIcon,
 	PaperAirplaneIcon,
 	PauseIcon,
 	PlayIcon,
@@ -43,6 +44,8 @@ const Home = () => {
 	const [hours5, setHours5] = useState(0);
 	const [minutes5, setMinutes5] = useState(0);
 	const [seconds5, setSeconds5] = useState(0);
+
+	const [swipe, setSwipe] = useState<null | Swiper>(null);
 
 	// eslint-disable-next-line @typescript-eslint/no-unused-vars
 	const [music, _] = useState(new Audio(song));
@@ -242,75 +245,92 @@ const Home = () => {
 				></motion.div>
 			</section>
 			<section className="max-w-5xl p-4 md:p-0 mx-auto -mt-36 z-30 relative">
-				<Swiper
-					loop
-					autoplay={{
-						delay: 2500,
-						disableOnInteraction: false,
-					}}
-					modules={[Autoplay]}
-				>
-					<SwiperSlide>
-						<h4 className="text-sm font-semibold text-purple-300">
-							2nd June, 2024
-						</h4>
-						<h3 className="md:text-xl font-semibold text-purple-600">
-							Service of Songs
-						</h3>
-						<p className="text-xs md:text-base">
-							In {days1} Days, {hours1} Hours, {minutes1} Minutes, {seconds1}{" "}
-							Seconds
-						</p>
-					</SwiperSlide>
-					<SwiperSlide>
-						<h4 className="text-sm font-semibold text-purple-300">
-							5th June, 2024
-						</h4>
-						<h3 className="md:text-xl font-semibold text-purple-600">
-							Commendation Service
-						</h3>
-						<p className="text-xs md:text-base">
-							In {days2} Days, {hours2} Hours, {minutes2} Minutes, {seconds2}{" "}
-							Seconds
-						</p>
-					</SwiperSlide>
-					<SwiperSlide>
-						<h4 className="text-sm font-semibold text-purple-300">
-							7th June, 2024
-						</h4>
-						<h3 className="md:text-xl font-semibold text-purple-600">
-							Crusade / Service of Songs
-						</h3>
-						<p className="text-xs md:text-base">
-							In {days3} Days, {hours3} Hours, {minutes3} Minutes, {seconds3}{" "}
-							Seconds
-						</p>
-					</SwiperSlide>
-					<SwiperSlide>
-						<h4 className="text-sm font-semibold text-purple-300">
-							8th June, 2024
-						</h4>
-						<h3 className="md:text-xl font-semibold text-purple-600">
-							Burial Ceremony
-						</h3>
-						<p className="text-xs md:text-base">
-							In {days4} Days, {hours4} Hours, {minutes4} Minutes, {seconds4}{" "}
-							Seconds
-						</p>
-					</SwiperSlide>
-					<SwiperSlide>
-						<h4 className="text-sm font-semibold text-purple-300">
-							9th June, 2024
-						</h4>
-						<h3 className="md:text-xl font-semibold text-purple-600">
-							Outing Service
-						</h3>
-						<p className="text-xs md:text-base">
-							In {days5} Days, {hours5} Hours, {minutes5} Minutes, {seconds5}{" "}
-							Seconds
-						</p>
-					</SwiperSlide>
-				</Swiper>
+				<div className="relative">
+					<Swiper
+						loop
+						autoplay={{
+							delay: 5000,
+							disableOnInteraction: false,
+						}}
+						speed={1000}
+						modules={[Autoplay]}
+						onSwiper={(swiper) => setSwipe(swiper)}
+						spaceBetween={16}
+					>
+						<SwiperSlide>
+							<h4 className="text-sm font-semibold text-purple-300">
+								2nd June, 2024
+							</h4>
+							<h3 className="md:text-xl font-semibold text-purple-600">
+								Service of Songs
+							</h3>
+							<p className="text-xs md:text-base">
+								At Our Saviour's Anglican Church, off One Rd, Via Agbani Rd,
+								Enugu. <br /> In {days1} Days, {hours1} Hours, {minutes1}{" "}
+								Minutes, {seconds1} Seconds
+							</p>
+						</SwiperSlide>
+						<SwiperSlide>
+							<h4 className="text-sm font-semibold text-purple-300">
+								5th June, 2024
+							</h4>
+							<h3 className="md:text-xl font-semibold text-purple-600">
+								Commendation Service
+							</h3>
+							<p className="text-xs md:text-base">
+								At Christ Church, Uwani - 11am.
+								<br />
+								In {days2} Days, {hours2} Hours, {minutes2} Minutes, {seconds2}{" "}
+								Seconds
+							</p>
+						</SwiperSlide>
+						<SwiperSlide>
+							<h4 className="text-sm font-semibold text-purple-300">
+								7th June, 2024
+							</h4>
+							<h3 className="md:text-xl font-semibold text-purple-600">
+								Crusade / Service of Songs
+							</h3>
+							<p className="text-xs md:text-base">
+								At Isiafor Primary School Compound, St Paul's Church, Umueleke -
+								4pm. <br />
+								In {days3} Days, {hours3} Hours, {minutes3} Minutes, {seconds3}{" "}
+								Seconds
+							</p>
+						</SwiperSlide>
+						<SwiperSlide>
+							<h4 className="text-sm font-semibold text-purple-300">
+								8th June, 2024
+							</h4>
+							<h3 className="md:text-xl font-semibold text-purple-600">
+								Burial Ceremony
+							</h3>
+							<p className="text-xs md:text-base">
+								At St Paul's Anglican Church, Umueleke, Owerre, Ehime -Mbano -
+								11am. <br /> In {days4} Days, {hours4} Hours, {minutes4}{" "}
+								Minutes, {seconds4} Seconds
+							</p>
+						</SwiperSlide>
+						<SwiperSlide>
+							<h4 className="text-sm font-semibold text-purple-300">
+								9th June, 2024
+							</h4>
+							<h3 className="md:text-xl font-semibold text-purple-600">
+								Outing Service
+							</h3>
+							<p className="text-xs md:text-base">
+							At St Paul's Church, Umueleke - 9am.		<br /> In {days5} Days, {hours5} Hours, {minutes5} Minutes, {seconds5}{" "}
+								Seconds
+							</p>
+						</SwiperSlide>
+					</Swiper>
+					<button
+						onClick={() => swipe?.slideNext()}
+						className="absolute top-0 right-0 p-2 bg-purple-500/30 text-white rounded-full z-20"
+					>
+						<ChevronRightIcon className="h-6 w-6" />
+					</button>
+				</div>
 
 				<hr className="my-10 border-purple-900/30" />
 				<motion.h2
@@ -319,7 +339,7 @@ const Home = () => {
 					transition={{ duration: 1, delay: 0.5 }}
 					className="text-xl mx-auto font-semibold"
 				>
-					Tributes & Prayers
+					Tributes & Prayers ({tributes?.length})
 				</motion.h2>
 
 				<ul className="mt-6 flex flex-col gap-4 pb-20">

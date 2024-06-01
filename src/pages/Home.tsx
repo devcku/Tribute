@@ -266,8 +266,8 @@ const Home = () => {
 								Service of Songs
 							</h3>
 							<p className="text-xs md:text-base">
-								At Our Saviour's Anglican Church, off One Rd, Via Agbani Rd,
-								Enugu. <br /> In {days1} Days, {hours1} Hours, {minutes1}{" "}
+								At Our Emmanuel Anglican Church, Achara Layout,
+								Enugu - 4pm.  <br /> In {days1} Days, {hours1} Hours, {minutes1}{" "}
 								Minutes, {seconds1} Seconds
 							</p>
 						</SwiperSlide>

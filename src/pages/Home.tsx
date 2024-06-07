@@ -14,6 +14,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Swiper as SwiperType } from "swiper/types";
 import { images, song } from "../assets";
 import { tributesQuery, tributesRef } from "../contexts/DB";
+import { Link } from "react-router-dom";
 
 type tribute = { value: string; name: string; createdAt: Date };
 const Home = () => {
@@ -266,9 +267,9 @@ const Home = () => {
 								Service of Songs
 							</h3>
 							<p className="text-xs md:text-base">
-								At Emmanuel Anglican Church, Achara Layout,
-								Enugu - 4pm.  <br /> In {days1} Days, {hours1} Hours, {minutes1}{" "}
-								Minutes, {seconds1} Seconds
+								At Emmanuel Anglican Church, Achara Layout, Enugu - 4pm. <br />{" "}
+								In {days1} Days, {hours1} Hours, {minutes1} Minutes, {seconds1}{" "}
+								Seconds
 							</p>
 						</SwiperSlide>
 						<SwiperSlide>
@@ -320,8 +321,8 @@ const Home = () => {
 								Outing Service
 							</h3>
 							<p className="text-xs md:text-base">
-							At St Paul's Church, Umueleke - 9am.		<br /> In {days5} Days, {hours5} Hours, {minutes5} Minutes, {seconds5}{" "}
-								Seconds
+								At St Paul's Church, Umueleke - 9am. <br /> In {days5} Days,{" "}
+								{hours5} Hours, {minutes5} Minutes, {seconds5} Seconds
 							</p>
 						</SwiperSlide>
 					</Swiper>
@@ -334,14 +335,19 @@ const Home = () => {
 				</div>
 
 				<hr className="my-10 border-purple-900/30" />
-				<motion.h2
-					initial={{ opacity: 0 }}
-					animate={{ opacity: 1 }}
-					transition={{ duration: 1, delay: 0.5 }}
-					className="text-xl mx-auto font-semibold"
-				>
-					Tributes & Prayers ({tributes?.length})
-				</motion.h2>
+				<div className="flex items-center justify-between">
+					<motion.h2
+						initial={{ opacity: 0 }}
+						animate={{ opacity: 1 }}
+						transition={{ duration: 1, delay: 0.5 }}
+						className="text-xl font-semibold"
+					>
+						Tributes & Prayers ({tributes?.length})
+					</motion.h2>
+					<Link to="/tributes" className="flex text-purple-400">
+						All <ChevronRightIcon className="h-6" />
+					</Link>
+				</div>
 
 				<ul className="mt-6 flex flex-col gap-4 pb-20">
 					{tributes.map(({ value, name }, i) => (
